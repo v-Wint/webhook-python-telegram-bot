@@ -26,7 +26,7 @@ def main():
     dp = Dispatcher(bot, None, workers=0, use_context=True)
     # add handlers
     dp.add_handler(CommandHandler("start", start))
-    dp.add_handler(CommandHandler("help", help_))
+    dp.add_handler(CommandHandler("help", help))
     dp.add_handler(MessageHandler(Filters.text, echo))
     # start webhook
     bot.delete_webhook()
