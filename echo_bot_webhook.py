@@ -21,19 +21,19 @@ def echo(update, context):
 	
 app = Flask(__name__)
 def main():
-	# add dispatcher
+    # add dispatcher
     bot = Bot(TOKEN)
     dp = Dispatcher(bot, None, workers=0, use_context=True)
-	# add handlers
+    # add handlers
     dp.add_handler(CommandHandler("start", start))
     dp.add_handler(CommandHandler("help", help_))
     dp.add_handler(MessageHandler(Filters.text, echo))
-	# start webhook
+    # start webhook
     bot.delete_webhook()
     url = f"https://{USERNAME}.pythonanywhere.com/{TOKEN}"
     bot.set_webhook(url=url)
     
-	# process updates
+    # process updates
     @app.route('/' + TOKEN, methods=['POST'])
     def webhook():
         json_string = request.stream.read().decode('utf-8')
